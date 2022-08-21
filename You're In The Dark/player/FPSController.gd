@@ -5,19 +5,34 @@ export var acceleration : float = 5
 export var gravity : float = -0.98
 export var jump_power : float = 30
 export var mouse_sensitivity : float = 0.3
+export var default_fov := 70
+export var zoom_fov := 20
+
+var is_zooming : bool = false
 
 onready var head : Spatial = $Head
 onready var camera : Camera = $Head/Camera
+onready var camera_lense := $Lense
 
 var velocity : Vector3 = Vector3()
 var camera_x_rotation : float = 0
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	camera_lense.visible = false
 	
-func _process(_delta) -> void:
+func _process(delta) -> void:
 	if Input.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+	if Input.is_action_pressed("zoom"):
+		is_zooming = true
+		camera.fov = zoom_fov
+		camera_lense.visible = true
+	elif Input.is_action_just_released("zoom"):
+		is_zooming = false
+		camera.fov = default_fov
+		camera_lense.visible = false
 
 func _input(event) -> void:
 	if event is InputEventMouseMotion:
@@ -31,15 +46,16 @@ func _physics_process(delta) -> void:
 	var direction : Vector3 = Vector3()
 	var head_basis := head.get_global_transform().basis
 	
-	if Input.is_action_pressed("move_fwd"):
-		direction -= head_basis.z
-	elif Input.is_action_pressed("move_back"):
-		direction += head_basis.z
-		
-	if Input.is_action_pressed("move_left"):
-		direction -= head_basis.x
-	elif Input.is_action_pressed("move_right"):
-		direction += head_basis.x
+	if !is_zooming:
+		if Input.is_action_pressed("move_fwd"):
+			direction -= head_basis.z
+		elif Input.is_action_pressed("move_back"):
+			direction += head_basis.z
+			
+		if Input.is_action_pressed("move_left"):
+			direction -= head_basis.x
+		elif Input.is_action_pressed("move_right"):
+			direction += head_basis.x
 	
 	direction.y = 0
 	direction = direction.normalized()
