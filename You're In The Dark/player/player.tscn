@@ -36,6 +36,6 @@ handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="CameraViewport" type="Sprite" parent="Lense/Viewport"]
-position = Vector2( 512, 300.5 )
 scale = Vector2( 0.534375, 0.556481 )
 texture = ExtResource( 2 )
+centered = false
