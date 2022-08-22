@@ -10,59 +10,58 @@ var scene_list : Dictionary = {
 enum {SMALL, MEDIUM, LARGE}
 
 var item_list : Dictionary = {
-	"interior" : {
-		"small" : ["ItemTest"],
-		"medium" : [],
-		"large" : []
+	"Objects" : {
+		"interior" : {
+			"small" : ["ItemTest"],
+			"medium" : [],
+			"large" : []
+		},
+		"exterior" : {
+			"small" : [],
+			"medium" : [],
+			"large" : []
+		},
+		"basement" : {
+			"small" : [],
+			"medium" : [],
+			"large" : []
+		},
 	},
-	"exterior" : {
-		"small" : [],
-		"medium" : [],
-		"large" : []
+	"Tables" : {
+		"interior" : {
+			"small" : ["TableTest"],
+			"medium" : [],
+			"large" : []
 	},
-	"basement" : {
-		"small" : [],
-		"medium" : [],
-		"large" : []
+		"exterior" : {
+			"small" : [],
+			"medium" : [],
+			"large" : []
 	},
+		"basement" : {
+			"small" : [],
+			"medium" : [],
+			"large" : []
+		},
+	},
+	"Rooms": {
+		"interior" : {
+			"small" : ["RoomTest", "RoomDual"],
+			"medium" : [],
+			"large" : []
+		},
+		"exterior" : {
+			"small" : [],
+			"medium" : [],
+			"large" : []
+		},
+		"basement" : {
+			"small" : [],
+			"medium" : [],
+			"large" : []
+		},
+	}
 }
-
-var table_list : Dictionary = {
-	"interior" : {
-		"small" : ["TableTest"],
-		"medium" : [],
-		"large" : []
-	},
-	"exterior" : {
-		"small" : [],
-		"medium" : [],
-		"large" : []
-	},
-	"basement" : {
-		"small" : [],
-		"medium" : [],
-		"large" : []
-	},
-}
-
-var room_list : Dictionary = {
-	"interior" : {
-		"small" : ["RoomTest", "RoomDual"],
-		"medium" : [],
-		"large" : []
-	},
-	"exterior" : {
-		"small" : [],
-		"medium" : [],
-		"large" : []
-	},
-	"basement" : {
-		"small" : [],
-		"medium" : [],
-		"large" : []
-	},
-}
-
 func _ready() -> void:
 	if game_instance == null:
 		var new_game := game_state.new()
@@ -86,25 +85,14 @@ func get_game() -> game_state:
 
 func get_random_object(type : int, room_size : int, location : int) -> ItemBase:
 	var list : Array
-	var ref_list
-	var path_name : String
-	match type:
-		0:
-			ref_list = item_list
-			path_name = "Objects"
-		1:
-			ref_list = table_list
-			path_name = "Tables"
-		2:
-			ref_list = room_list
-			path_name = "Rooms"
-	print(ref_list.values()[location].values()[room_size])
-	list = ref_list.values()[location].values()[room_size]
-	var item : ItemBase = load("res://Items/" + path_name + "/" + list[game_instance.random.randi_range(0, list.size() - 1)] + ".tscn").instance()
+	var ref_list = item_list
+	list = ref_list.values()[type].values()[location].values()[room_size]
+	var item : ItemBase = load("res://Items/" + ref_list.keys()[type] + "/" + list[game_instance.random.randi_range(0, list.size() - 1)] + ".tscn").instance()
 	return (item as ItemBase)
-func get_item_list() -> Dictionary:
-	return item_list
-func get_table_list() -> Dictionary:
-	return table_list
-func get_room_list() -> Dictionary:
-	return room_list
+
+func get_item_list(index : int = -1) -> Dictionary:
+	if index == -1:
+		return item_list
+	else:
+		return item_list.values()[index]
+	
