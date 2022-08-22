@@ -21,6 +21,10 @@ onready var camera : Camera = $Head/Camera
 onready var camera_lense : ViewportContainer = $CanvasLayer/PanelContainer/Lense
 onready var camera_lense_viewport : Viewport = $CanvasLayer/PanelContainer/Lense/Viewport
 
+onready var _raycast : RayCast = $Head/Camera/RayCast
+onready var _hold_pos : Spatial = $Head/Hold
+var held_object : Spatial
+
 var velocity : Vector3 = Vector3()
 var camera_x_rotation : float = 0
 
@@ -64,6 +68,7 @@ func _input(event) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta : float) -> void:
+	
 	var direction : Vector3 = Vector3()
 	var head_basis := head.get_global_transform().basis
 	
@@ -85,3 +90,18 @@ func _physics_process(delta : float) -> void:
 	velocity.y += gravity
 	
 	velocity = move_and_slide(velocity, Vector3.UP)
+	
+	if Input.is_action_just_pressed("interact"):
+		if held_object:
+			if _raycast.get_collider():
+				var body : Spatial = _raycast.get_collider().get_parent()
+				if body.is_in_group("ItemSatisfier"):
+					held_object.global_transform.origin = body.global_transform.origin
+					held_object = null
+		else:
+			if _raycast.get_collider():
+				var body : Spatial = _raycast.get_collider().get_parent()
+				if body.is_in_group("Item"):
+					held_object = body
+	if held_object:
+		held_object.global_transform.origin = _hold_pos.global_transform.origin

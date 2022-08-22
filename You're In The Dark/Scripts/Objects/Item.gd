@@ -7,4 +7,4 @@ export(NodePath) var area
 var satisfaction_table : Table
 var satisfaction_unit : int 
 func _ready():
-	pass
+	add_to_group("Item")
