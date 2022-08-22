@@ -1,5 +1,7 @@
 extends KinematicBody
 
+signal can_take_picture
+signal can_not_take_picture
 
 export var speed : float = 5
 export var acceleration : float = 5
@@ -32,12 +34,14 @@ func _process(_delta) -> void:
 	
 	if Input.is_action_pressed("zoom"):
 		is_zooming = true
+		emit_signal("can_take_picture")
 		camera.fov = current_zoom
 		camera_lense_viewport.size.x = OS.window_size.x
 		camera_lense_viewport.size.y = OS.window_size.y
 		camera_lense.visible = true
 	elif Input.is_action_just_released("zoom"):
 		is_zooming = false
+		emit_signal("can_not_take_picture")
 		camera.fov = default_fov
 		camera_lense.visible = false
 
