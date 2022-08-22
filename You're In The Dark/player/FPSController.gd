@@ -1,5 +1,6 @@
 extends KinematicBody
 
+
 export var speed : float = 5
 export var acceleration : float = 5
 export var gravity : float = -0.98
