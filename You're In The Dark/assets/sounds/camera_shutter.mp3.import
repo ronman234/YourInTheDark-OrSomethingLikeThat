@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/camera_shutter.mp3-1fe646a216259c7afb7572fa17ce1e00.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/camera_shutter.mp3"
+dest_files=[ "res://.import/camera_shutter.mp3-1fe646a216259c7afb7572fa17ce1e00.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
