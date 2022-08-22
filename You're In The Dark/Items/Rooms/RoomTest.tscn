@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Objects/Room.gd" type="Script" id=1]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="ConcavePolygonShape" id=2]
+data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+
+[sub_resource type="CylinderMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+flags_unshaded = true
+albedo_color = Color( 1, 0, 1, 0.733333 )
+
+[node name="Location_Room" type="Spatial"]
+script = ExtResource( 1 )
+table_spawners = [ [ NodePath("RoomSpawns/MeshInstance"), 0 ] ]
+
+[node name="Geometry" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Geometry"]
+transform = Transform( 7.6511, 0, 0, 0, 0.126607, 0, 0, 0, 7.6511, 0, 0, 0 )
+mesh = SubResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="Geometry"]
+transform = Transform( 7.6511, 0, 0, 0, 0.126607, 0, 0, 0, 7.6511, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Geometry/StaticBody"]
+shape = SubResource( 2 )
+
+[node name="RoomSpawns" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="RoomSpawns"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541461, 4.89107 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )

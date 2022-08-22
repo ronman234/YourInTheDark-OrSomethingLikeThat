@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Objects/Table.gd" type="Script" id=1]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+albedo_color = Color( 1, 0, 1, 0.309804 )
+
+[node name="Table" type="Spatial"]
+script = ExtResource( 1 )
+satisfaction_locations = [ NodePath("ItemSatisfiers/MeshInstance") ]
+
+[node name="Geometry" type="Spatial" parent="."]
+
+[node name="CSGCombiner" type="CSGCombiner" parent="Geometry"]
+operation = 1
+
+[node name="MeshInstance" type="CSGBox" parent="Geometry/CSGCombiner"]
+
+[node name="MeshInstance2" type="CSGBox" parent="Geometry/CSGCombiner"]
+transform = Transform( 1.70022, 0, 0, 0, 0.882603, 0, 0, 0, 0.914612, 0, -0.164679, 0 )
+operation = 2
+
+[node name="MeshInstance3" type="CSGBox" parent="Geometry/CSGCombiner"]
+transform = Transform( 0.893537, 0, 0, 0, 0.882603, 0, 0, 0, 1.76128, 0, -0.164679, 0.169955 )
+operation = 2
+
+[node name="ItemSatisfiers" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="ItemSatisfiers"]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1.26583, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )

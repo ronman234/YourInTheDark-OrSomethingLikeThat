@@ -18,8 +18,8 @@ var current_zoom : float = 70
 
 onready var head : Spatial = $Head
 onready var camera : Camera = $Head/Camera
-onready var camera_lense : ViewportContainer = $Lense
-onready var camera_lense_viewport : Viewport = $Lense/Viewport
+onready var camera_lense : ViewportContainer = $CanvasLayer/PanelContainer/Lense
+onready var camera_lense_viewport : Viewport = $CanvasLayer/PanelContainer/Lense/Viewport
 
 var velocity : Vector3 = Vector3()
 var camera_x_rotation : float = 0
@@ -28,7 +28,7 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera_lense.visible = false
 	
-func _process(_delta) -> void:
+func _process(_delta : float) -> void:
 	if Input.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
@@ -36,8 +36,8 @@ func _process(_delta) -> void:
 		is_zooming = true
 		emit_signal("can_take_picture")
 		camera.fov = current_zoom
-		camera_lense_viewport.size.x = OS.window_size.x
-		camera_lense_viewport.size.y = OS.window_size.y
+#		camera_lense_viewport.size.x = OS.window_size.x
+#		camera_lense_viewport.size.y = OS.window_size.y
 		camera_lense.visible = true
 	elif Input.is_action_just_released("zoom"):
 		is_zooming = false
@@ -48,9 +48,9 @@ func _process(_delta) -> void:
 func _input(event) -> void:
 	if event is InputEventMouseMotion:
 		head.rotate_y(-deg2rad(event.relative.x * mouse_sensitivity))
-		var x_delta = event.relative.y * mouse_sensitivity
+		var x_delta : float = event.relative.y * mouse_sensitivity
 		if camera_x_rotation + x_delta > -90 and camera_x_rotation + x_delta < 90:
-			camera.rotate_x(-deg2rad(event.relative.y * mouse_sensitivity))
+			(camera as Camera).rotate_x(-deg2rad(event.relative.y * mouse_sensitivity))
 			camera_x_rotation += x_delta
 			
 	if event is InputEvent:
@@ -63,7 +63,7 @@ func _input(event) -> void:
 	if event is InputEvent and Input.is_action_just_pressed("interact"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _physics_process(delta) -> void:
+func _physics_process(delta : float) -> void:
 	var direction : Vector3 = Vector3()
 	var head_basis := head.get_global_transform().basis
 	

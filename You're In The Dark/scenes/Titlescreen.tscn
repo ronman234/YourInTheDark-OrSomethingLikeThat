@@ -24,3 +24,5 @@ margin_top = 299.0
 margin_right = 1024.0
 margin_bottom = 319.0
 text = "Play!"
+
+[connection signal="button_up" from="VBoxContainer/Button" to="." method="_on_Button_button_up"]

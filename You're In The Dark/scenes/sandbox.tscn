@@ -1,23 +1,29 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/music/shotinthedark.mp3" type="AudioStream" id=2]
+[ext_resource path="res://Items/Rooms/RoomTest.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Items/Rooms/RoomDual.tscn" type="PackedScene" id=4]
 
 [sub_resource type="PlaneMesh" id=1]
 
 [sub_resource type="ConcavePolygonShape" id=2]
 data = PoolVector3Array( 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1 )
 
-[node name="Spatial" type="Spatial"]
+[node name="Main" type="Spatial"]
 
-[node name="Floor" type="StaticBody" parent="."]
+[node name="Floor" type="Spatial" parent="."]
+transform = Transform( 0.194776, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Floor"]
 transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0 )
 layers = 495
 mesh = SubResource( 1 )
+skeleton = NodePath("../StaticBody")
 
-[node name="CollisionShape" type="CollisionShape" parent="Floor"]
+[node name="StaticBody" type="StaticBody" parent="Floor"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Floor/StaticBody"]
 transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0 )
 shape = SubResource( 2 )
 
@@ -31,11 +37,10 @@ stream = ExtResource( 2 )
 volume_db = -25.0
 autoplay = true
 
-[node name="CSGBox" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3255, 1.21835, 0 )
+[node name="Rooms" type="Spatial" parent="."]
 
-[node name="CSGBox2" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.24737, 1.21835, -7.27751 )
+[node name="Location_Room" parent="Rooms" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -0.1, 13 )
 
-[node name="CSGBox3" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.23833, 1.21835, -11.2269 )
+[node name="Location_Room2" parent="Rooms" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -0.1, -4 )
