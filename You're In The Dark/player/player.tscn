@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://player/FPSController.gd" type="Script" id=1]
-[ext_resource path="res://assets/camera_viewport.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/camera_viewport.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleMesh" id=1]
 radius = 0.5

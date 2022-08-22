@@ -1,14 +1,17 @@
 extends KinematicBody
 
-export var speed : float = 10
+export var speed : float = 5
 export var acceleration : float = 5
 export var gravity : float = -0.98
 export var jump_power : float = 30
 export var mouse_sensitivity : float = 0.3
 export var default_fov := 70
-export var zoom_fov := 20
+export var zoom_fov := 40
+export var max_zoom := 40
+export var min_zoom := 90
 
 var is_zooming : bool = false
+var current_zoom := 70
 
 onready var head : Spatial = $Head
 onready var camera : Camera = $Head/Camera
@@ -21,13 +24,13 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera_lense.visible = false
 	
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	if Input.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	if Input.is_action_pressed("zoom"):
 		is_zooming = true
-		camera.fov = zoom_fov
+		camera.fov = current_zoom
 		camera_lense.visible = true
 	elif Input.is_action_just_released("zoom"):
 		is_zooming = false
@@ -41,6 +44,13 @@ func _input(event) -> void:
 		if camera_x_rotation + x_delta > -90 and camera_x_rotation + x_delta < 90:
 			camera.rotate_x(-deg2rad(event.relative.y * mouse_sensitivity))
 			camera_x_rotation += x_delta
+			
+	if event is InputEvent:
+		if Input.is_action_just_pressed("zoom_increase") and camera.fov > max_zoom and is_zooming:
+			current_zoom -= 5
+	if event is InputEvent:
+		if Input.is_action_just_pressed("zoom_decrease") and camera.fov < min_zoom and is_zooming:
+			current_zoom += 5
 
 func _physics_process(delta) -> void:
 	var direction : Vector3 = Vector3()
