@@ -9,3 +9,4 @@ var random : RandomNumberGenerator = RandomNumberGenerator.new()
 func _ready() -> void:
 	Master.game_instance = self
 	random.randomize()
+

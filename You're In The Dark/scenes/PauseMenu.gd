@@ -3,9 +3,9 @@ extends Control
 var volume = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	$SettingsContainer/VBoxContainer/Volume.value = volume
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), volume)
+#func _ready():
+#	$SettingsContainer/VBoxContainer/Volume.value = volume
+#	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), volume)
 
 var is_paused = false setget set_is_paused
 
@@ -17,7 +17,7 @@ func set_is_paused(value):
 	is_paused = value
 	get_tree().paused = is_paused
 	visible = is_paused
-	$MainMenuContainer.visible = is_paused
+	$".".visible = is_paused
 	if(is_paused):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:
