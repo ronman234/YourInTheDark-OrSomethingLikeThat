@@ -6,7 +6,8 @@
 [ext_resource path="res://Items/Rooms/RoomDual.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/textures/camera-1827-470349.png" type="Texture" id=5]
 [ext_resource path="res://assets/textures/Noir_regular.otf" type="DynamicFontData" id=6]
-[ext_resource path="res://scenes/PauseMenu.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/PauseMenu.gd" type="Script" id=7]
+
 
 [sub_resource type="PlaneMesh" id=1]
 
