@@ -12,6 +12,7 @@ albedo_color = Color( 1, 0, 1, 0.309804 )
 
 [node name="Table" type="Spatial"]
 script = ExtResource( 1 )
+type = 2
 satisfaction_locations = [ NodePath("ItemSatisfiers/MeshInstance") ]
 
 [node name="Geometry" type="Spatial" parent="."]

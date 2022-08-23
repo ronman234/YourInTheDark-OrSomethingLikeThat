@@ -1,5 +1,7 @@
 extends KinematicBody
 
+class_name Player
+
 signal can_take_picture
 signal can_not_take_picture
 
@@ -28,10 +30,13 @@ var held_object : Spatial
 var velocity : Vector3 = Vector3()
 var camera_x_rotation : float = 0
 
+var current_location : ItemBase
+
 func _ready() -> void:
+	add_to_group("Player")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera_lense.visible = false
-	
+	$Head/Hand.player = self
 func _process(_delta : float) -> void:
 	if Input.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -90,19 +95,22 @@ func _physics_process(delta : float) -> void:
 	velocity = move_and_slide(velocity, Vector3.UP)
 	
 	if Input.is_action_just_pressed("interact"):
-		if held_object:
-			if _raycast.get_collider():
-				var body : Spatial = _raycast.get_collider().get_parent()
-				if body.is_in_group("ItemSatisfier"):
-					held_object.global_transform.origin = body.global_transform.origin
-					held_object = null
-		else:
-			if _raycast.get_collider():
-				var body : Spatial = _raycast.get_collider().get_parent()
-				if body.is_in_group("Item"):
-					held_object = body
-				if body.is_in_group("Door"):
-					print("WAOW")
-					body.activate()
+		if !is_zooming:
+			if held_object:
+				if _raycast.get_collider():
+					var body : Spatial = _raycast.get_collider().get_parent()
+					if body.is_in_group("ItemSatisfier"):
+						(held_object as InteractiveItem).current_table = body.table
+						(held_object as InteractiveItem).current_unit = body.unit
+						held_object.global_transform.origin = body.global_transform.origin
+						held_object = null
+			else:
+				if _raycast.get_collider():
+					var body : Spatial = _raycast.get_collider().get_parent()
+					if body.is_in_group("Item"):
+						held_object = body
+					if body.is_in_group("Door"):
+						body.activate()
+#						direction -= head_basis.z
 	if held_object:
 		held_object.global_transform.origin = _hold_pos.global_transform.origin

@@ -13,6 +13,7 @@ albedo_color = Color( 0, 1, 0.0588235, 1 )
 [node name="InteractiveItem" type="Spatial"]
 script = ExtResource( 1 )
 id = "yeetus"
+bounds = NodePath("Area")
 area = NodePath("Area")
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
