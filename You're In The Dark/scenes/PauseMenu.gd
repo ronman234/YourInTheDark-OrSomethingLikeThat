@@ -4,9 +4,8 @@ var volume = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$SettingsMenu/Volume/Label2.text = String(volume)
-	print(String(volume))
-	$SettingsMenu/Volume.value = volume
+	$SettingsMenu/HBoxContainer/VolumeLabel.text = String(volume)
+	$SettingsMenu/HBoxContainer/Volume.value = volume
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), volume)
 
 var is_paused = false setget set_is_paused
@@ -52,7 +51,9 @@ func _on_ControlsReturnBtn_pressed():
 	$MainMenuContainer.visible = true
 	$ControlsContainer.visible = false
 
-
 func _on_Volume_value_changed(value):
 	AudioServer.set_bus_volume_db(volume, value/100)
-	$SettingsMenu/Volume/Label2.text = String(value)
+	$SettingsMenu/HBoxContainer/VolumeLabel.text = String(value)
+
+func _on_QuitBtn_button_up():
+	get_tree().quit()

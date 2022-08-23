@@ -4,7 +4,8 @@ var game_instance : game_state
 
 var scene_list : Dictionary = {
 	"sandbox" : "res://SceneList/Debug.tres",
-	"title" : "res://SceneList/Titlescreen.tres"
+	"title" : "res://SceneList/Titlescreen.tres",
+	"maingame" : "res://SceneList/Main.tres"
 }
 
 enum {SMALL, MEDIUM, LARGE}
@@ -46,21 +47,22 @@ var item_list : Dictionary = {
 	},
 	"Rooms": {
 		"interior" : {
-			"small" : ["RoomTest", "RoomDual"],
-			"medium" : [],
-			"large" : []
+			"small" : ["RoomTest"],
+			"medium" : ["RoomDual"],
+			"large" : ["RoomDual"]
 		},
 		"exterior" : {
-			"small" : [],
-			"medium" : [],
-			"large" : []
+			"small" : ["RoomDual"],
+			"medium" : ["RoomDual"],
+			"large" : ["RoomDual"]
 		},
 		"basement" : {
-			"small" : [],
-			"medium" : [],
-			"large" : []
+			"small" : ["RoomDual"],
+			"medium" : ["RoomDual"],
+			"large" : ["RoomDual"]
 		},
-	}
+	},
+	"Halls" : ["HallTest", "HallTest1"]
 }
 func _ready() -> void:
 	if game_instance == null:
@@ -83,12 +85,17 @@ func flush() -> void:
 func get_game() -> game_state:
 	return game_instance
 
-func get_random_object(type : int, room_size : int, location : int) -> ItemBase:
+func get_random_object(type : int = 0, room_size : int = 0, location : int = 0) -> ItemBase:
 	var list : Array
 	var ref_list = item_list
-	list = ref_list.values()[type].values()[location].values()[room_size]
-	var item : ItemBase = load("res://Items/" + ref_list.keys()[type] + "/" + list[game_instance.random.randi_range(0, list.size() - 1)] + ".tscn").instance()
-	return (item as ItemBase)
+	if type < 3:
+		list = ref_list.values()[type].values()[location].values()[room_size]
+		var item : ItemBase = load("res://Items/" + ref_list.keys()[type] + "/" + list[game_instance.random.randi_range(0, list.size() - 1)] + ".tscn").instance()
+		return (item as ItemBase)
+	else:
+		list = ref_list.values()[type]
+		var item : ItemBase = load("res://Items/" + ref_list.keys()[type] + "/" + list[game_instance.random.randi_range(0, list.size() - 1)] + ".tscn").instance()
+		return (item as ItemBase)
 
 func get_item_list(index : int = -1) -> Dictionary:
 	if index == -1:

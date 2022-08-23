@@ -40,8 +40,6 @@ func _process(_delta : float) -> void:
 		is_zooming = true
 		emit_signal("can_take_picture")
 		camera.fov = current_zoom
-#		camera_lense_viewport.size.x = OS.window_size.x
-#		camera_lense_viewport.size.y = OS.window_size.y
 		camera_lense.visible = true
 	elif Input.is_action_just_released("zoom"):
 		is_zooming = false
@@ -103,5 +101,8 @@ func _physics_process(delta : float) -> void:
 				var body : Spatial = _raycast.get_collider().get_parent()
 				if body.is_in_group("Item"):
 					held_object = body
+				if body.is_in_group("Door"):
+					print("WAOW")
+					body.activate()
 	if held_object:
 		held_object.global_transform.origin = _hold_pos.global_transform.origin

@@ -1,11 +1,31 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Objects/Room.gd" type="Script" id=1]
+[ext_resource path="res://assets/models/basicmansionkit/Wall.material" type="Material" id=2]
+[ext_resource path="res://assets/textures/carpetbasic.jpg" type="Texture" id=3]
 
-[sub_resource type="CubeMesh" id=1]
+[sub_resource type="CylinderMesh" id=7]
 
-[sub_resource type="ConcavePolygonShape" id=2]
-data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+[sub_resource type="ArrayMesh" id=1]
+resource_name = "roomhack_Cube001"
+surfaces/0 = {
+"aabb": AABB( -7.2, 0, -2, 5.50001, 3, 4 ),
+"array_data": PoolByteArray( 154, 153, 217, 191, 0, 0, 0, 0, 0, 0, 128, 63, 129, 0, 0, 63, 93, 56, 0, 56, 154, 153, 217, 191, 0, 0, 0, 0, 0, 0, 128, 63, 0, 127, 127, 127, 69, 55, 0, 60, 154, 153, 217, 191, 0, 0, 64, 64, 0, 0, 128, 63, 129, 0, 0, 63, 93, 56, 69, 51, 154, 153, 217, 191, 0, 0, 0, 0, 0, 0, 128, 191, 129, 0, 0, 63, 209, 57, 0, 56, 154, 153, 217, 191, 0, 0, 0, 0, 0, 0, 128, 191, 0, 127, 127, 127, 23, 57, 0, 60, 154, 153, 217, 191, 0, 0, 64, 64, 0, 0, 128, 191, 129, 0, 0, 63, 209, 57, 69, 51, 154, 153, 217, 191, 0, 0, 0, 0, 0, 0, 0, 192, 129, 0, 0, 63, 23, 57, 0, 56, 154, 153, 217, 191, 0, 0, 0, 0, 0, 0, 0, 192, 0, 0, 0, 1, 93, 52, 0, 0, 154, 153, 217, 191, 0, 0, 0, 0, 0, 0, 0, 192, 0, 127, 127, 127, 209, 57, 0, 60, 154, 153, 217, 191, 0, 0, 0, 0, 0, 0, 0, 64, 129, 0, 0, 63, 23, 57, 0, 56, 154, 153, 217, 191, 0, 0, 0, 0, 0, 0, 0, 64, 127, 127, 0, 1, 0, 60, 0, 60, 154, 153, 217, 191, 0, 0, 0, 0, 0, 0, 0, 64, 0, 127, 127, 127, 209, 53, 0, 60, 102, 102, 230, 192, 0, 0, 0, 0, 0, 0, 0, 192, 0, 0, 0, 1, 93, 52, 0, 56, 102, 102, 230, 192, 0, 0, 0, 0, 0, 0, 0, 192, 0, 127, 127, 127, 209, 57, 0, 56, 102, 102, 230, 192, 0, 0, 0, 0, 0, 0, 0, 192, 127, 0, 0, 1, 93, 56, 93, 48, 102, 102, 230, 192, 0, 0, 0, 0, 0, 0, 128, 63, 0, 127, 127, 127, 69, 55, 0, 56, 102, 102, 230, 192, 0, 0, 0, 0, 0, 0, 128, 191, 0, 127, 127, 127, 23, 57, 0, 56, 154, 153, 217, 191, 0, 0, 64, 64, 0, 0, 0, 192, 129, 0, 0, 63, 23, 57, 69, 51, 154, 153, 217, 191, 0, 0, 64, 64, 0, 0, 0, 192, 0, 129, 127, 127, 209, 53, 0, 56, 154, 153, 217, 191, 0, 0, 64, 64, 0, 0, 0, 192, 0, 0, 0, 1, 0, 0, 0, 0, 102, 102, 230, 192, 0, 0, 64, 64, 0, 0, 0, 192, 0, 129, 127, 127, 209, 53, 0, 60, 102, 102, 230, 192, 0, 0, 64, 64, 0, 0, 0, 192, 0, 0, 0, 1, 0, 0, 0, 56, 102, 102, 230, 192, 0, 0, 64, 64, 0, 0, 0, 192, 127, 0, 0, 1, 93, 52, 93, 48, 154, 153, 217, 191, 0, 0, 64, 64, 0, 0, 0, 64, 129, 0, 0, 63, 23, 57, 69, 51, 154, 153, 217, 191, 0, 0, 64, 64, 0, 0, 0, 64, 0, 129, 127, 127, 0, 0, 0, 56, 154, 153, 217, 191, 0, 0, 64, 64, 0, 0, 0, 64, 127, 127, 0, 1, 209, 57, 0, 60, 102, 102, 230, 192, 0, 0, 64, 64, 0, 0, 0, 64, 0, 129, 127, 127, 0, 0, 0, 60, 102, 102, 230, 192, 0, 0, 64, 64, 0, 0, 0, 64, 127, 127, 0, 1, 209, 57, 0, 56, 102, 102, 230, 192, 0, 0, 64, 64, 0, 0, 0, 64, 127, 0, 0, 1, 93, 52, 0, 56, 102, 102, 230, 192, 0, 0, 0, 0, 0, 0, 0, 64, 127, 127, 0, 1, 0, 60, 0, 56, 102, 102, 230, 192, 0, 0, 0, 0, 0, 0, 0, 64, 0, 127, 127, 127, 209, 53, 0, 56, 102, 102, 230, 192, 0, 0, 0, 0, 0, 0, 0, 64, 127, 0, 0, 1, 93, 56, 0, 56 ),
+"array_index_data": PoolByteArray( 3, 0, 17, 0, 5, 0, 3, 0, 6, 0, 17, 0, 2, 0, 9, 0, 0, 0, 2, 0, 23, 0, 9, 0, 4, 0, 13, 0, 8, 0, 4, 0, 16, 0, 13, 0, 1, 0, 16, 0, 4, 0, 1, 0, 15, 0, 16, 0, 11, 0, 15, 0, 1, 0, 11, 0, 30, 0, 15, 0, 12, 0, 19, 0, 7, 0, 12, 0, 21, 0, 19, 0, 10, 0, 27, 0, 29, 0, 10, 0, 25, 0, 27, 0, 20, 0, 24, 0, 18, 0, 20, 0, 26, 0, 24, 0, 14, 0, 28, 0, 22, 0, 14, 0, 31, 0, 28, 0 ),
+"blend_shape_data": [  ],
+"format": 2194711,
+"index_count": 54,
+"material": ExtResource( 2 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 32
+}
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="ConcavePolygonShape" id=9]
+data = PoolVector3Array( -1.7, 0, -1, -1.7, 3, -2, -1.7, 3, -1, -1.7, 0, -1, -1.7, 0, -2, -1.7, 3, -2, -1.7, 3, 1, -1.7, 0, 2, -1.7, 0, 1, -1.7, 3, 1, -1.7, 3, 2, -1.7, 0, 2, -1.7, 0, -1, -7.2, 0, -2, -1.7, 0, -2, -1.7, 0, -1, -7.2, 0, -1, -7.2, 0, -2, -1.7, 0, 1, -7.2, 0, -1, -1.7, 0, -1, -1.7, 0, 1, -7.2, 0, 1, -7.2, 0, -1, -1.7, 0, 2, -7.2, 0, 1, -1.7, 0, 1, -1.7, 0, 2, -7.2, 0, 2, -7.2, 0, 1, -7.2, 0, -2, -1.7, 3, -2, -1.7, 0, -2, -7.2, 0, -2, -7.2, 3, -2, -1.7, 3, -2, -1.7, 0, 2, -7.2, 3, 2, -7.2, 0, 2, -1.7, 0, 2, -1.7, 3, 2, -7.2, 3, 2, -7.2, 3, -2, -1.7, 3, 2, -1.7, 3, -2, -7.2, 3, -2, -7.2, 3, 2, -1.7, 3, 2, -7.2, 0, -2, -7.2, 3, 2, -7.2, 3, -2, -7.2, 0, -2, -7.2, 0, 2, -7.2, 3, 2 )
 
 [sub_resource type="CylinderMesh" id=3]
 
@@ -23,40 +43,71 @@ albedo_color = Color( 1, 0, 1, 0.309804 )
 [node name="Location_Room" type="Spatial"]
 script = ExtResource( 1 )
 table_spawners = [ [ NodePath("TableSpawn/MeshInstance"), 0 ], [ NodePath("TableSpawn/MeshInstance2"), 0 ], [ NodePath("TableSpawn/MeshInstance3"), 0 ] ]
-item_spawners = [ NodePath("ItemSpawner/MeshInstance") ]
+item_spawners = [ NodePath("ItemSpawner/MeshInstance"), NodePath("ItemSpawner/MeshInstance2") ]
 
 [node name="Geometry" type="Spatial" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Geometry"]
-transform = Transform( 7.6511, 0, 0, 0, 0.126607, 0, 0, 0, 7.6511, 0, 0, 0 )
+[node name="Torch" type="Spatial" parent="Geometry"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Geometry/Torch"]
+transform = Transform( 0.2, 0, 0, 0, 1.2, 0, 0, 0, 0.2, 0, 0, 0 )
+mesh = SubResource( 7 )
+
+[node name="OmniLight" type="OmniLight" parent="Geometry/Torch"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0 )
+light_color = Color( 1, 0.776471, 0.509804, 1 )
+
+[node name="Torch2" type="Spatial" parent="Geometry"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Geometry/Torch2"]
+transform = Transform( 0.2, 0, 0, 0, 1.2, 0, 0, 0, 0.2, 0, 0, 0 )
+mesh = SubResource( 7 )
+
+[node name="OmniLight" type="OmniLight" parent="Geometry/Torch2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0 )
+
+[node name="roomhack" type="Spatial" parent="Geometry"]
+
+[node name="Cube001" type="MeshInstance" parent="Geometry/roomhack"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 3.4, 0, 0 )
 mesh = SubResource( 1 )
+material/0 = SubResource( 8 )
 
-[node name="StaticBody" type="StaticBody" parent="Geometry"]
-transform = Transform( 7.6511, 0, 0, 0, 0.126607, 0, 0, 0, 7.6511, 0, 0, 0 )
+[node name="StaticBody" type="StaticBody" parent="Geometry/roomhack/Cube001"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Geometry/StaticBody"]
-shape = SubResource( 2 )
+[node name="CollisionShape" type="CollisionShape" parent="Geometry/roomhack/Cube001/StaticBody"]
+shape = SubResource( 9 )
 
 [node name="TableSpawn" type="Spatial" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="TableSpawn"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541461, 4.89107 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -0.458539, 1.89107 )
 mesh = SubResource( 3 )
 material/0 = SubResource( 4 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="TableSpawn"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2731, 0.541461, 0.265248 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7269, 0.041461, 2.26525 )
 mesh = SubResource( 3 )
 material/0 = SubResource( 4 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="TableSpawn"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29845, 0.541461, -5.13992 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.70155, 0.241461, -3.13992 )
 mesh = SubResource( 3 )
 material/0 = SubResource( 4 )
 
 [node name="ItemSpawner" type="Spatial" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="ItemSpawner"]
-transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1, 0.4, -2 )
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -3, 0.4, -2 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="ItemSpawner"]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -8, 0.4, -1 )
 mesh = SubResource( 5 )
 material/0 = SubResource( 6 )

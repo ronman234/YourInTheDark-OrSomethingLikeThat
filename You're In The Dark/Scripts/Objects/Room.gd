@@ -7,6 +7,8 @@ var room_quality : int
 var room_complexity : int = table_spawners.size()
 export var item_spawners : Array = [] # Nest Arrays, [obj, size]
 
+var spawn_piece : RoomSpawner
+
 var items : Array = []
 var tables : Array = []
 
