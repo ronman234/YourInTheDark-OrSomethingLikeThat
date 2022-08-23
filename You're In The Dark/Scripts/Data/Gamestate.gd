@@ -5,6 +5,7 @@ class_name game_state
 var current_scene : Scene = null
 var random : RandomNumberGenerator = RandomNumberGenerator.new()
 var current_room : Room = null
+var current_mansion
 var room_score : int = 0
 func _ready() -> void:
 	Master.game_instance = self
@@ -23,3 +24,6 @@ func flash(current_location : ItemBase, player : Player) -> void:
 		if room_score >= complexity:
 			current_location.door.activate()
 			room_score = 0
+			current_mansion.completed_rooms += 1
+			current_mansion.ping()
+#			current_mansion.rooms.erase(current_location)

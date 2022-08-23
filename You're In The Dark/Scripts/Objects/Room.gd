@@ -16,6 +16,7 @@ func _ready() -> void:
 	populate_room()
 	set_targets()
 	(get_node(bounds) as Area).connect("body_entered", self, "_on_body_entered")
+	(get_node(bounds) as Area).connect("body_exited", self, "_on_body_exited")
 	room_complexity = table_spawners.size()
 func populate_room() -> void:
 	for i in item_spawners:
@@ -34,3 +35,7 @@ func set_targets() -> void:
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
 		door.deactivate()
+func _on_body_exited(body):
+	if body.is_in_group("Player"):
+		door.deactivate()
+		self.queue_free()

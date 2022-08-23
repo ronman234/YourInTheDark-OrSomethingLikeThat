@@ -47,7 +47,7 @@ var item_list : Dictionary = {
 	},
 	"Rooms": {
 		"interior" : {
-			"small" : ["RoomTest"],
+			"small" : ["RoomDual"],
 			"medium" : ["RoomDual"],
 			"large" : ["RoomDual"]
 		},

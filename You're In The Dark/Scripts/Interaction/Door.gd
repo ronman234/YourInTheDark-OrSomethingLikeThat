@@ -6,12 +6,13 @@ var corresponding_object
 var spawn
 
 var is_active : bool = false
-
+var can_open : bool = true
 func activate():
-#	get_tree().call_group("Door","deactivate", self)
 	spawn = corresponding_object
 	add_child(spawn)
-	$AnimationPlayer.play("open")
-	is_active = true
+	if can_open:
+		$AnimationPlayer.play("open")
+		is_active = true
 func deactivate():
 	$AnimationPlayer.play("close")
+#	can_open = false

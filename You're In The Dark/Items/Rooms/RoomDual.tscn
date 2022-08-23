@@ -1,10 +1,8 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Objects/Room.gd" type="Script" id=1]
 [ext_resource path="res://assets/models/basicmansionkit/Wall.material" type="Material" id=2]
 [ext_resource path="res://assets/textures/carpetbasic.jpg" type="Texture" id=3]
-
-[sub_resource type="CylinderMesh" id=7]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "roomhack_Cube001"
@@ -27,19 +25,6 @@ albedo_texture = ExtResource( 3 )
 [sub_resource type="ConcavePolygonShape" id=9]
 data = PoolVector3Array( -1.7, 0, -1, -1.7, 3, -2, -1.7, 3, -1, -1.7, 0, -1, -1.7, 0, -2, -1.7, 3, -2, -1.7, 3, 1, -1.7, 0, 2, -1.7, 0, 1, -1.7, 3, 1, -1.7, 3, 2, -1.7, 0, 2, -1.7, 0, -1, -7.2, 0, -2, -1.7, 0, -2, -1.7, 0, -1, -7.2, 0, -1, -7.2, 0, -2, -1.7, 0, 1, -7.2, 0, -1, -1.7, 0, -1, -1.7, 0, 1, -7.2, 0, 1, -7.2, 0, -1, -1.7, 0, 2, -7.2, 0, 1, -1.7, 0, 1, -1.7, 0, 2, -7.2, 0, 2, -7.2, 0, 1, -7.2, 0, -2, -1.7, 3, -2, -1.7, 0, -2, -7.2, 0, -2, -7.2, 3, -2, -1.7, 3, -2, -1.7, 0, 2, -7.2, 3, 2, -7.2, 0, 2, -1.7, 0, 2, -1.7, 3, 2, -7.2, 3, 2, -7.2, 3, -2, -1.7, 3, 2, -1.7, 3, -2, -7.2, 3, -2, -7.2, 3, 2, -1.7, 3, 2, -7.2, 0, -2, -7.2, 3, 2, -7.2, 3, -2, -7.2, 0, -2, -7.2, 0, 2, -7.2, 3, 2 )
 
-[sub_resource type="CylinderMesh" id=3]
-
-[sub_resource type="SpatialMaterial" id=4]
-flags_transparent = true
-flags_unshaded = true
-albedo_color = Color( 1, 0, 1, 0.733333 )
-
-[sub_resource type="CubeMesh" id=5]
-
-[sub_resource type="SpatialMaterial" id=6]
-flags_transparent = true
-albedo_color = Color( 1, 0, 1, 0.309804 )
-
 [sub_resource type="BoxShape" id=10]
 
 [node name="Location_Room" type="Spatial"]
@@ -51,27 +36,6 @@ item_spawners = [ NodePath("ItemSpawner/MeshInstance"), NodePath("ItemSpawner/Me
 
 [node name="Geometry" type="Spatial" parent="."]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
-
-[node name="Torch" type="Spatial" parent="Geometry"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 3 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Geometry/Torch"]
-transform = Transform( 0.2, 0, 0, 0, 1.2, 0, 0, 0, 0.2, 0, 0, 0 )
-mesh = SubResource( 7 )
-
-[node name="OmniLight" type="OmniLight" parent="Geometry/Torch"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0 )
-light_color = Color( 1, 0.776471, 0.509804, 1 )
-
-[node name="Torch2" type="Spatial" parent="Geometry"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -3 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Geometry/Torch2"]
-transform = Transform( 0.2, 0, 0, 0, 1.2, 0, 0, 0, 0.2, 0, 0, 0 )
-mesh = SubResource( 7 )
-
-[node name="OmniLight" type="OmniLight" parent="Geometry/Torch2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0 )
 
 [node name="roomhack" type="Spatial" parent="Geometry"]
 
@@ -88,38 +52,26 @@ shape = SubResource( 9 )
 [node name="TableSpawn" type="Spatial" parent="."]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
-[node name="MeshInstance" type="MeshInstance" parent="TableSpawn"]
+[node name="MeshInstance" type="Spatial" parent="TableSpawn"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -0.458539, 1.89107 )
-mesh = SubResource( 3 )
-material/0 = SubResource( 4 )
 
-[node name="MeshInstance2" type="MeshInstance" parent="TableSpawn"]
+[node name="MeshInstance2" type="Spatial" parent="TableSpawn"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7269, 0.041461, 2.26525 )
-mesh = SubResource( 3 )
-material/0 = SubResource( 4 )
 
-[node name="MeshInstance3" type="MeshInstance" parent="TableSpawn"]
+[node name="MeshInstance3" type="Spatial" parent="TableSpawn"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.70155, 0.241461, -3.13992 )
-mesh = SubResource( 3 )
-material/0 = SubResource( 4 )
 
 [node name="ItemSpawner" type="Spatial" parent="."]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
-[node name="MeshInstance" type="MeshInstance" parent="ItemSpawner"]
+[node name="MeshInstance" type="Spatial" parent="ItemSpawner"]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -3, 0.4, -2 )
-mesh = SubResource( 5 )
-material/0 = SubResource( 6 )
 
-[node name="MeshInstance3" type="MeshInstance" parent="ItemSpawner"]
+[node name="MeshInstance3" type="Spatial" parent="ItemSpawner"]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -3, 0.4, 1 )
-mesh = SubResource( 5 )
-material/0 = SubResource( 6 )
 
-[node name="MeshInstance2" type="MeshInstance" parent="ItemSpawner"]
+[node name="MeshInstance2" type="Spatial" parent="ItemSpawner"]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -8, 0.4, -1 )
-mesh = SubResource( 5 )
-material/0 = SubResource( 6 )
 
 [node name="Bound" type="Area" parent="."]
 
