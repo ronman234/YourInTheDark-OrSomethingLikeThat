@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://player/FPSController.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/camera_viewport.png" type="Texture" id=2]
 [ext_resource path="res://assets/sounds/camera_shutter.mp3" type="AudioStream" id=3]
 [ext_resource path="res://player/Interact.gd" type="Script" id=4]
+[ext_resource path="res://player/PlayerInfo.gd" type="Script" id=5]
 
 [sub_resource type="Environment" id=4]
 background_mode = 1
@@ -147,6 +148,28 @@ gui_disable_input = true
 scale = Vector2( 0.534375, 0.556481 )
 texture = ExtResource( 2 )
 centered = false
+
+[node name="HealthLabel" type="RichTextLabel" parent="CanvasLayer"]
+modulate = Color( 1, 0, 0, 1 )
+self_modulate = Color( 1, 0, 0, 1 )
+margin_left = 944.0
+margin_top = 583.0
+margin_right = 1022.0
+margin_bottom = 598.0
+text = "Health: 100"
+fit_content_height = true
+
+[node name="MoneyLabel" type="RichTextLabel" parent="CanvasLayer"]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 3.0
+margin_top = 582.0
+margin_right = 202.0
+margin_bottom = 597.0
+text = "Money: 100"
+fit_content_height = true
+
+[node name="PlayerInfo" type="Node" parent="."]
+script = ExtResource( 5 )
 
 [connection signal="can_not_take_picture" from="." to="Head/Hand" method="_on_Player_can_not_take_picture"]
 [connection signal="can_take_picture" from="." to="Head/Hand" method="_on_Player_can_take_picture"]

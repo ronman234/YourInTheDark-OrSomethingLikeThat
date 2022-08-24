@@ -37,6 +37,8 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera_lense.visible = false
 	$Head/Hand.player = self
+	
+	
 func _process(_delta : float) -> void:
 	if Input.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -114,3 +116,7 @@ func _physics_process(delta : float) -> void:
 #						direction -= head_basis.z
 	if held_object:
 		held_object.global_transform.origin = _hold_pos.global_transform.origin
+		
+		
+func Get_Player_Info():
+	return $PlayerInfo
