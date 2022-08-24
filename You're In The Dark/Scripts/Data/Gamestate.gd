@@ -26,4 +26,3 @@ func flash(current_location : ItemBase, player : Player) -> void:
 			room_score = 0
 			current_mansion.completed_rooms += 1
 			current_mansion.ping()
-#			current_mansion.rooms.erase(current_location)
