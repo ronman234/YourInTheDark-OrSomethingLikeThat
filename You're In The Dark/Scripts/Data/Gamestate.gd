@@ -7,6 +7,11 @@ var random : RandomNumberGenerator = RandomNumberGenerator.new()
 var current_room : Room = null
 var current_mansion
 var room_score : int = 0
+var current_health : int = 100
+var current_money : int = 100
+var current_film_rolls : int = 3
+var is_dead : bool = false
+var out_of_film : bool = false
 
 func _ready() -> void:
 	Master.game_instance = self

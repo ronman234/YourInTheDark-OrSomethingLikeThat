@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/sounds/camera_shutter.mp3" type="AudioStream" id=3]
 [ext_resource path="res://player/Interact.gd" type="Script" id=4]
 [ext_resource path="res://player/Camera.gd" type="Script" id=5]
-[ext_resource path="res://Prefabs/streetsign.tscn" type="PackedScene" id=6]
+[ext_resource path="res://player/PlayerInfo.gd" type="Script" id=6]
 
 [sub_resource type="Environment" id=4]
 background_mode = 1
@@ -125,9 +125,6 @@ shape = SubResource( 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Sign" parent="CanvasLayer" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.068, -3.939 )
-
 [node name="Lense2" type="ViewportContainer" parent="CanvasLayer"]
 visible = false
 margin_right = 1024.0
@@ -170,6 +167,27 @@ gui_disable_input = true
 scale = Vector2( 0.534375, 0.556481 )
 texture = ExtResource( 2 )
 centered = false
+
+[node name="HealthLabel" type="Label" parent="CanvasLayer"]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 862.0
+margin_top = 13.0
+margin_right = 936.0
+margin_bottom = 27.0
+rect_scale = Vector2( 2, 2 )
+text = "Health: 100"
+
+[node name="MoneyLabel" type="Label" parent="CanvasLayer"]
+modulate = Color( 0.156863, 1, 0, 1 )
+margin_left = 9.0
+margin_top = 10.0
+margin_right = 92.0
+margin_bottom = 24.0
+rect_scale = Vector2( 2, 2 )
+text = "Money: $100"
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource( 6 )
 
 [connection signal="can_not_take_picture" from="." to="Head/Hand" method="_on_Player_can_not_take_picture"]
 [connection signal="can_take_picture" from="." to="Head/Hand" method="_on_Player_can_take_picture"]
