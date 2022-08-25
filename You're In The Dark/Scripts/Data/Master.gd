@@ -47,19 +47,19 @@ var item_list : Dictionary = {
 	},
 	"Rooms": {
 		"interior" : {
-			"small" : ["RoomDual"],
-			"medium" : ["RoomDual"],
-			"large" : ["RoomDual"]
+			"small" : ["RoomDual", "RoomKitchen"],
+			"medium" : ["RoomDual", "RoomKitchen"],
+			"large" : ["RoomDual", "RoomKitchen"]
 		},
 		"exterior" : {
-			"small" : ["RoomDual"],
+			"small" : ["RoomDual", "RoomKitchen"],
 			"medium" : ["RoomDual"],
 			"large" : ["RoomDual"]
 		},
 		"basement" : {
-			"small" : ["RoomDual"],
+			"small" : ["RoomDual", "RoomKitchen"],
 			"medium" : ["RoomDual"],
-			"large" : ["RoomDual"]
+			"large" : ["RoomDual", "RoomKitchen"]
 		},
 	},
 	"Halls" : ["HallTest", "HallTest1"]
