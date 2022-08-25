@@ -10,7 +10,7 @@ var mansion
 #var current_door
 var doors : Array = []
 var rooms : Array = []
-var mansion_size : int = 5
+var mansion_size : int = 1
 func _ready() -> void:
 	(get_node(bounds) as Area).connect("body_entered", self, "_on_body_entered")
 	(get_node(bounds) as Area).connect("body_exited", self, "_on_body_exited")

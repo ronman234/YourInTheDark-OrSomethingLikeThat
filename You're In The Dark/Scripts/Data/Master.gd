@@ -5,7 +5,8 @@ var game_instance : game_state
 var scene_list : Dictionary = {
 	"sandbox" : "res://SceneList/Debug.tres",
 	"title" : "res://SceneList/Titlescreen.tres",
-	"maingame" : "res://SceneList/Main.tres"
+	"maingame" : "res://SceneList/Main.tres",
+	"sell" : "res://SceneList/Sell.tres"
 }
 
 enum {SMALL, MEDIUM, LARGE}

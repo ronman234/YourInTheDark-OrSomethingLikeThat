@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://player/FPSController.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/camera_viewport.png" type="Texture" id=2]
@@ -9,7 +9,13 @@
 [sub_resource type="Environment" id=4]
 background_mode = 1
 ambient_light_color = Color( 0.247059, 0.247059, 0.247059, 1 )
+<<<<<<< Updated upstream
 ambient_light_energy = 0.3
+fog_enabled = true
+fog_color = Color( 0, 0, 0, 1 )
+fog_depth_begin = 8.0
+fog_depth_end = 25.0
+>>>>>>> Stashed changes
 tonemap_mode = 4
 tonemap_white = 13.34
 auto_exposure_enabled = true
@@ -129,24 +135,45 @@ shape = SubResource( 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+<<<<<<< Updated upstream
 [node name="Lense2" type="ViewportContainer" parent="CanvasLayer"]
+
+[node name="CaptureWorld" type="ViewportContainer" parent="CanvasLayer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+mouse_filter = 2
+
+[node name="Viewport" type="Viewport" parent="CanvasLayer/CaptureWorld"]
+size = Vector2( 128, 64 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+gui_disable_input = true
+
+[node name="Camera" type="Camera" parent="CanvasLayer/CaptureWorld/Viewport"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 60.962, 0 )
+script = ExtResource( 5 )
+
+[node name="GPS" type="ViewportContainer" parent="CanvasLayer"]
+>>>>>>> Stashed changes
 visible = false
 margin_right = 1024.0
 margin_bottom = 600.0
 mouse_filter = 2
 
-[node name="Viewport" type="Viewport" parent="CanvasLayer/Lense2"]
-size = Vector2( 1024, 600 )
+[node name="Viewport" type="Viewport" parent="CanvasLayer/GPS"]
+size = Vector2( 256, 150 )
 transparent_bg = true
 handle_input_locally = false
 hdr = false
 render_target_update_mode = 0
 gui_disable_input = true
 
-[node name="Camera" type="Camera" parent="CanvasLayer/Lense2/Viewport"]
+[node name="Camera" type="Camera" parent="CanvasLayer/GPS/Viewport"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 60.962, 0 )
 environment = SubResource( 7 )
 script = ExtResource( 5 )
+is_gps = true
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -173,6 +200,10 @@ gui_disable_input = true
 scale = Vector2( 0.534375, 0.556481 )
 texture = ExtResource( 2 )
 centered = false
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
 
 [connection signal="can_not_take_picture" from="." to="Head/Hand" method="_on_Player_can_not_take_picture"]
 [connection signal="can_take_picture" from="." to="Head/Hand" method="_on_Player_can_take_picture"]
