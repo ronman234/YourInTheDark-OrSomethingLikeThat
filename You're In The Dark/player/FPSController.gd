@@ -33,6 +33,7 @@ var camera_x_rotation : float = 0
 var current_location : ItemBase
 
 func get_camera_view():
+#	return get_node("CanvasLayer/CaptureWorld/Viewport")
 	return get_node("CanvasLayer/CaptureWorld/Viewport")
 
 func _ready() -> void:

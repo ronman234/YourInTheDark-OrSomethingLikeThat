@@ -78,6 +78,7 @@ material/2 = SubResource( 4 )
 
 [node name="SpotLight" type="SpotLight" parent="." groups=["ShadowCaster"]]
 transform = Transform( 0.994423, 0.105466, 1.75435e-11, -0.00152222, 0.0143528, 0.999896, 0.105455, -0.994319, 0.0144333, 0, -0.3, 0 )
+light_energy = 0.2
 shadow_enabled = true
 shadow_color = Color( 0.117647, 0.117647, 0.117647, 1 )
 spot_range = 20.8799
@@ -85,7 +86,7 @@ spot_angle = 60.1315
 
 [node name="SpotLight2" type="SpotLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-light_energy = 1.4
+light_energy = 0.3
 shadow_reverse_cull_face = true
 spot_range = 10.0
 spot_angle = 80.18

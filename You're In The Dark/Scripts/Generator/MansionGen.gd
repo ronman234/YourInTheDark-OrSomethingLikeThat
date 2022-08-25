@@ -13,6 +13,8 @@ var door_container := Spatial.new()
 var hall_container := Spatial.new()
 
 func _ready():
+	Master.get_game().get_address_gen().generate_address_name()
+	print(str("Current Addr: ", Master.get_game().get_address_gen().get_address()))
 	add_child(door_container)
 	add_child(hall_container)
 	Master.get_game().current_mansion = self
