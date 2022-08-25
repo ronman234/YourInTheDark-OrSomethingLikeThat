@@ -7,6 +7,7 @@ var random : RandomNumberGenerator = RandomNumberGenerator.new()
 var current_room : Room = null
 var current_mansion
 var room_score : int = 0
+
 func _ready() -> void:
 	Master.game_instance = self
 	random.randomize()

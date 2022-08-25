@@ -35,11 +35,25 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.3711
 [node name="HallNoDoor2" parent="Geometry" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62268e-07, 0, -6 )
 
+[node name="SpotLight" type="SpotLight" parent="Geometry/HallNoDoor2"]
+transform = Transform( 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, 0, 6, 0 )
+shadow_enabled = true
+shadow_color = Color( 0.556863, 0.556863, 0.556863, 1 )
+spot_range = 15.0
+spot_angle = 51.4841
+
 [node name="HallNoDoor3" parent="Geometry" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.11959e-07, 0, -14 )
 
 [node name="HallNoDoor4" parent="Geometry" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.86805e-07, 0, -18 )
+
+[node name="SpotLight2" type="SpotLight" parent="Geometry/HallNoDoor4"]
+transform = Transform( 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, 0, 6, 0 )
+shadow_enabled = true
+shadow_color = Color( 0.447059, 0.447059, 0.447059, 1 )
+spot_range = 11.0
+spot_angle = 52.1881
 
 [node name="HallCap" parent="Geometry" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.74228e-08, 0, -2 )
