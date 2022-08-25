@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://player/FPSController.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/camera_viewport.png" type="Texture" id=2]
 [ext_resource path="res://assets/sounds/camera_shutter.mp3" type="AudioStream" id=3]
 [ext_resource path="res://player/Interact.gd" type="Script" id=4]
 [ext_resource path="res://player/Camera.gd" type="Script" id=5]
+[ext_resource path="res://Prefabs/streetsign.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Environment" id=4]
 background_mode = 1
@@ -124,7 +125,11 @@ shape = SubResource( 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Sign" parent="CanvasLayer" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.068, -3.939 )
+
 [node name="Lense2" type="ViewportContainer" parent="CanvasLayer"]
+visible = false
 margin_right = 1024.0
 margin_bottom = 600.0
 mouse_filter = 2
@@ -133,7 +138,7 @@ mouse_filter = 2
 size = Vector2( 1024, 600 )
 transparent_bg = true
 handle_input_locally = false
-render_target_update_mode = 3
+render_target_update_mode = 0
 gui_disable_input = true
 
 [node name="Camera" type="Camera" parent="CanvasLayer/Lense2/Viewport"]
