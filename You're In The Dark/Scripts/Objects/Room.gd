@@ -13,32 +13,20 @@ var items : Array = []
 var tables : Array = []
 var door
 func _ready() -> void:
-	room_quality = (item_spawners.size() + item_size) * Master.get_game().random.randi_range(2,4)
 	populate_room()
+	set_targets()
 	(get_node(bounds) as Area).connect("body_entered", self, "_on_body_entered")
 	(get_node(bounds) as Area).connect("body_exited", self, "_on_body_exited")
 	room_complexity = table_spawners.size()
-func populate_room(which : int = -1) -> void:
-	var table = false
-	var item = false
-	if which == -1:
-		table = true
-		item = true
-	if which == 0:
-		item = true
-	if which == 1:
-		table = true
-	if item:
-		for i in item_spawners:
-			var new_item : InteractiveItem = Master.get_random_object(0, item_size, item_location)
-			get_node(i).add_child(new_item)
-			items.append(new_item)
-	if table:
-		for i in table_spawners:
-			var new_item : Table = Master.get_random_object(1, item_size, item_location)
-			get_node(i[0]).add_child(new_item)
-			tables.append(new_item)
-	set_targets()
+func populate_room() -> void:
+	for i in item_spawners:
+		var new_item : InteractiveItem = Master.get_random_object(0, item_size, item_location)
+		get_node(i).add_child(new_item)
+		items.append(new_item)
+	for i in table_spawners:
+		var new_item : Table = Master.get_random_object(1, item_size, item_location)
+		get_node(i[0]).add_child(new_item)
+		tables.append(new_item)
 func set_targets() -> void:
 	for i in items:
 		var set_table : Table = tables[Master.get_game().random.randi_range(0, tables.size() - 1)]

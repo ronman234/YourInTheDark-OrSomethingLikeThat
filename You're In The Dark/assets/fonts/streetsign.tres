@@ -3,5 +3,8 @@
 [ext_resource path="res://assets/fonts/hit-the-road.regular.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 76
+<<<<<<< HEAD
+size = 75
+=======
+>>>>>>> parent of bd7f08d (Added ghost effect)
 font_data = ExtResource( 1 )

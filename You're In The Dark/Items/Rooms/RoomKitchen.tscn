@@ -172,7 +172,7 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.341461, -7.10893 )
 
 [node name="MeshInstance2" type="Spatial" parent="TableSpawn"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7269, 3.04146, -0.73475 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7269, 0.041461, 2.26525 )
 
 [node name="MeshInstance3" type="Spatial" parent="TableSpawn"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.70155, 0.241461, -3.13992 )
@@ -181,10 +181,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.70155, 0.241461, -3.13992 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="MeshInstance" type="Spatial" parent="ItemSpawner"]
-transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -4, 1.3, 1 )
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -4, 1.9, 1 )
 
 [node name="MeshInstance3" type="Spatial" parent="ItemSpawner"]
-transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -6, 1.2, 1 )
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -3, 0.4, 1 )
 
 [node name="MeshInstance2" type="Spatial" parent="ItemSpawner"]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -8, 0.4, -1 )
