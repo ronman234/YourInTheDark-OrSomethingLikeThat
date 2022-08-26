@@ -9,7 +9,7 @@ export(size) var item_size
 export(location) var item_location
 export (NodePath) var bounds
 enum _type {
-	ITEM, ROOM, TABLE, HALL
+	ITEM, ROOM, TABLE, HALL, ENTERANCE, FOYER
 }
 export(_type) var type 
 func _ready() -> void:

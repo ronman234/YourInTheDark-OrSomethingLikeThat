@@ -32,6 +32,10 @@ var camera_x_rotation : float = 0
 
 var current_location : ItemBase
 
+func get_camera_view():
+#	return get_node("CanvasLayer/CaptureWorld/Viewport")
+	return get_node("CanvasLayer/CaptureWorld/Viewport")
+
 func _ready() -> void:
 	add_to_group("Player")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -68,8 +72,8 @@ func _input(event) -> void:
 		if Input.is_action_just_pressed("zoom_decrease") and camera.fov < min_zoom and is_zooming:
 			current_zoom += 5
 			
-	if event is InputEvent and Input.is_action_just_pressed("interact"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+#	if event is InputEvent and Input.is_action_just_pressed("interact"):
+#		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta : float) -> void:
 	
